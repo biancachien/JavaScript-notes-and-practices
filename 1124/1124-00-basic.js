@@ -1,7 +1,7 @@
 //判斷是否為陣列
 //const c = [1, 2]
-//無法用console.log(typeof c)
-//必須用console.log(Array.isArray (c))
+//console.log(typeof c)只會判斷是object
+//console.log(Array.isArray (c))才會判斷是不是陣列
 
 //陣列為地址的概念
 const c = [1, 2]
