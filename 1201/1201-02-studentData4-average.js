@@ -3,7 +3,7 @@ const rawData = `"學生姓名","國文","數學","英文"
 "張大頭",80,75,60
 "李一百",100,60,85`
 
-// 物件(學生資料)
+// 學生資料的物件
 // {
 //   name: '李一百',
 //   chinese: 100,
@@ -34,7 +34,7 @@ for (let i = 0; i < titleArray.length; i++) {
 
 dataDisplay += `<thead><tr>${titleDisplay}</tr></thead>`
 
-// 學生資料內容呈現部份(3個)========================================
+// 學生資料內容呈現部份(3個)=========================================
 let bodyDisplay = ''
 
 const studentArray = []
@@ -51,10 +51,15 @@ for (let i = 1; i < rawDataArray.length; i++) {
     math: +bodyArray[2],
     english: +bodyArray[3],
   }
-
   //把student學生資料放進studentArray
   studentArray.push(student)
 }
+
+console.log(studentArray)
+
+let chineseTotal = 0
+let mathTotal = 0
+let englishTotal = 0
 
 //把studentArray的姓名和各科成績印在網頁上
 for (let i = 0; i < studentArray.length; i++) {
@@ -64,9 +69,25 @@ for (let i = 0; i < studentArray.length; i++) {
                      <td>${studentArray[i].math}</td>
                      <td>${studentArray[i].english}</td>
                      </tr>`
+
+  chineseTotal += studentArray[i].chinese
+  mathTotal += studentArray[i].math
+  englishTotal += studentArray[i].english
 }
 
-console.log(studentArray)
+console.log(
+  (chineseTotal / studentArray.length).toFixed(0),
+  (mathTotal / studentArray.length).toFixed(0),
+  (englishTotal / studentArray.length).toFixed(0)
+)
+
+//顯示每個人的各科總平均(運用studentArray計算)
+bodyDisplay += `<tr>
+                  <td>各科總平均</td>
+                  <td>${(chineseTotal / studentArray.length).toFixed(0)}</td>
+                  <td>${(mathTotal / studentArray.length).toFixed(0)}</td>
+                  <td>${(englishTotal / studentArray.length).toFixed(0)}</td>
+                <tr>`
 
 dataDisplay += `<tbody>${bodyDisplay}</tbody>`
 
